@@ -1,0 +1,63 @@
+<?php
+require_once dirname(dirname(__FILE__)).'/init.php';
+
+include_once CLASS_TEMPLATE;
+include_once FUNC_BASE_CLIENT;
+include_once FUNC_RECAPTCHA;
+
+define('PAGE_TYPE', 'cfm');
+try {
+	
+	//submit
+
+	if ($T_USER == 0 || $T_USER == '') {
+		header("Location: /index.php?err=1");
+		exit;
+	}
+
+	$steps = get_steps($T_USER);
+	if (count($steps) < 4) {
+		header("Location: /index.php?err=2");
+		exit;
+	}
+
+
+	$_POST['cid'] = $T_USER;	
+	if (isset($_GET['cfm']) && $_GET['cfm'] == 1) {
+		// was there a reCAPTCHA response?
+//		if ($_POST["recaptcha_response_field"]) {
+//    		$resp = recaptcha_check_answer (GOOGLE_RECAPTCHA_PRI, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+	        //$resp->is_valid &&
+			if (user_confirm() > 0) {
+				header("Location: /index.php?googlepass=1");		
+				exit;
+        	} 
+			else {
+                // set the error code so that we can display it
+                $error_recaptcha = $resp->error;
+	        }
+//		}		
+	}
+
+
+	$tpl = new Template;
+	$tpl->assign('user', get_client());
+	$tpl->assign('edu', get_edu());
+	$tpl->assign('wxp', get_wxp());
+	$tpl->assign('ielts', get_ielts());
+
+	$tpl->assign('login_user', $T_EMAIL);
+	$tpl->assign('pagetype', PAGE_TYPE);	
+	$tpl->assign('country', get_country());
+	$tpl->assign('visacate', get_visacate());	
+	//$tpl->assign('google_recaptcha', recaptcha_get_html(GOOGLE_RECAPTCHA_PUB, $error_recaptcha));
+    $tpl->display('cfm.tpl');
+}
+catch(Exception $e) {
+	$err['succ'] = 0;
+	$err['msg' ] = $e->getMessage();
+	echo json_encode($err);
+	exit(1);
+}
+
+

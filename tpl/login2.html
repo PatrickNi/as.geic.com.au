@@ -1,0 +1,99 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Visa Assessment Form</title>
+
+    <link rel="canonical" href="https://as.geic.com.au/">
+
+    <!-- Bootstrap core CSS -->
+<link href="/include/bootstrap-3.0.2-dist/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+{literal}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+{/literal}
+    <!-- Custom styles for this template -->
+    <link href="/css/signin.css?v=12345" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <form class="form-signin" method="post" action="index.php">
+      <img class="mb-4" src="/images/geic4.png">
+  <!--<img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+      <h1 class="h3 mb-3 font-weight-normal">澳大利亚签证评估</h1>
+      <p class="mt-5 mb-3">您的签证，值得澳洲权威移民律师的亲自评估!</p>
+      <h1 class="h3 mb-3 font-weight-normal">Australia Visa Online Assessment</h1>
+      <p class="mt-5 mb-3">Our team guarantee to contact you within 24 hours once you submitted.</p>
+      <p>
+      <label for="su_email" class="sr-only">Email address</label>
+      <input type="email" id="su_email" class="form-control" placeholder="Email address" autofocus="">
+      <button class="btn btn-lg btn-danger btn-block" id="sign_up">新客户注册(sign up)</button>
+      </p>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control form-control-sm" placeholder="Email address" required="" autofocus="" name="t_email">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control form-control-sm" placeholder="Password" required="" name="t_pass">
+      <button class="btn btn-primary btn-block" type="submit" id="signin">老客户登录(sign in)</button>
+      <p class="mt-5 mb-3 text-muted">www.geic.com.au</p>
+      <img class="mb-4"  width="180px" height="180px"  src="/images/wechat2.png">
+      <p class="mt-5 mb-3 text-muted">填表帮助，请扫公众号到秘书服务</p>
+    </form>
+  </body>
+
+   <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/include/bootstrap-3.0.2-dist/dist/js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+  {literal}
+  <script>
+  if ($('#errcode').val() != '') {
+      switch($('#errcode').val()) {
+          case '1':
+              alert("请先登录，或注册！(Please sign in or sign up, first!)");
+              break;
+          case '2':
+              alert("请完善您的各项资料(Please complete following sections in orange or white!)");
+              break;
+          default:
+              break;
+      }
+  }
+
+  $('#sign_up').click(function(){
+      if($('#su_email').val() == '') {
+          alert("注册邮件地址不能为空(Please fill in your email addreass)");
+          return false
+      }
+      var btn_name = $(this).text();
+      $(this).text('Submitting......');
+      $(this).attr('disabled', true);
+      var tt = (new Date()).valueOf();
+      $.getJSON('index.php?tt='+tt+'&em=' + $('#su_email').val(), function(data){
+          $('#sign_up').text(btn_name);
+          $('#sign_up').attr('disabled', false);
+          if (data.succ == 1)
+              window.location.href = 'client/info.php';
+          else
+              alert("注册失败，邮件地址已存在。老客户修改简历，请使用会员登录。");
+     });
+  });
+  </script>
+{/literal}
+</html>
