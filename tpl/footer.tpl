@@ -31,7 +31,7 @@
     {elseif $pagetype == 'ielts'}
         <script src="/js/c_ielts.js?v03"></script>                        
     {elseif $pagetype == 'cfm'}
-        <script src="/js/c_cfm.js?v085"></script>                         
+        <script src="/js/c_cfm.js?v095"></script>                         
     {/if}
     
     {literal}

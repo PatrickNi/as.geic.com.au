@@ -56,3 +56,18 @@ $("input[name='t_fdate']").datepicker({format:'yyyy-mm-dd', viewMode:2}).on('cha
 $("input[name='t_tdate']").datepicker({format:'yyyy-mm-dd', viewMode:2}).on('changeDate', function(ev){if(ev.viewMode == 'days'){$(this).datepicker('hide');}});
 $("input[name='t_testday']").datepicker({format:'yyyy-mm-dd', viewMode:2}).on('changeDate', function(ev){if(ev.viewMode == 'days'){$(this).datepicker('hide');}});
 $("input[name='t_planday']").datepicker({format:'yyyy-mm-dd', viewMode:2}).on('changeDate', function(ev){if(ev.viewMode == 'days'){$(this).datepicker('hide');}});
+
+function del_wxp(id) {
+	loading('show');
+	$.getJSON('/client/wxp.php?del=1&id='+ id, function(data){
+		loading('close');
+		$('#w'+id).remove();			
+	});			
+}
+function del_edu(id) {
+	loading('show');
+	$.getJSON('/client/edu.php?del=1&id='+ id, function(data){
+		loading('close');
+		$('#e'+id).remove();			
+	});			
+}

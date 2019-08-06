@@ -16,7 +16,7 @@ try {
 	}
 
 	$steps = get_steps($T_USER);
-	if (count($steps) < 4) {
+	if (count($steps) < 3) {
 		header("Location: /index.php?err=2");
 		exit;
 	}

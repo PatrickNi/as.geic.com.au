@@ -45,7 +45,7 @@
     	        	<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">{$login_user} <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="divider"></li>
-                        <li><a href="/exit.php">退出(Login Off)</a></li>                        
+                        <li><a href="/exit.php">退出(Log off)</a></li>                        
                       </ul>                    
                   </li>
         	  	</ul>

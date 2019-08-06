@@ -287,6 +287,7 @@
                       <div class="form-group">
                           <div class="col-lg-offset-4 col-lg-6">
                             <p class="pull-right">
+                              <button type="button" class="btn btn-danger" onclick="del_edu({$id})">删除(Delete)</button>&nbsp;&nbsp;
                               <button type="button" class="btn btn-default" id="edit_edu_{$id}" >编辑(Edit) </button>&nbsp;
                               <button type="button" class="btn btn-warning" id="save_edu_{$id}" disabled >保存(Save) </button>
                             </p>
@@ -299,7 +300,7 @@
 
 	      	<hr/>
           {foreach key=id item=v from=$wxp}
-            <div class="panel panel-success" id="e{$id}">
+            <div class="panel panel-success" id="w{$id}">
                 <div class="panel-heading">
                 	工作经历(Workding Experience) - {$id}
                  </div>
@@ -357,6 +358,7 @@
                       <div class="form-group">
                           <div class="col-lg-offset-4 col-lg-6">
                             <p class="pull-right">
+                              <button type="button" class="btn btn-danger" onclick="del_wxp({$id})">删除(Delete)</button>&nbsp;&nbsp;
                               <button type="button" class="btn btn-default" id="edit_wxp_{$id}" >编辑(Edit)</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="save_wxp_{$id}" disabled>保存(Save)</button>&nbsp;
                             </p>
