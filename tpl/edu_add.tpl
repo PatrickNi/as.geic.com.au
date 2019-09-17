@@ -7,7 +7,7 @@
         <p>{$v.t_school} @{$country}<p/>
         <p>{$v.t_qual}</p>
         <p>{$v.t_major}</p>
-        <p>{if $v.t_fulltime == 1}Fulltime{else}Parttime{/if}</p>        
+        <p>{if $v.t_fulltime == 1}Full-time{else}Part-time{/if}</p>        
         <p>COMPLETED: {$v.t_status}</p>  
 		<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_edu('{$id}')">Delete</button></p>                          
     </div>

@@ -16,7 +16,7 @@
 	{/if}
     
     <div class="container">
-		<div class="row">
+		<div class="row" style="padding-top:20px;">
 			{if $login_user == ''}
 
 			<div class="col-xs-4">
@@ -27,11 +27,11 @@
           {if $cfm == 1}
           <p/>
           <div class="alert alert-warning">
-              <strong>感谢您的咨询！</strong>
+              <strong>感谢您的咨询！</strong><br/>
               您的澳大利亚签证咨询已经成功提交！ 我们的移民律师，会在当天回复您。
                 <p></p>
-                <strong>Congratulation!</strong>
-                Your Australia visa inquiry has been submitted successfully. Our registered migration agents will advise you within 1 working day.Thank you for choosing Global.
+                <strong>Congratulation!</strong></br>
+                Your Australia visa inquiry has been submitted successfully. Our registered migration agents and lawyers will advise you within 1 working day.Thank you for choosing Global.
             </div>             
             </p>         
           {else}

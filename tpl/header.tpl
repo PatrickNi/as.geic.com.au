@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Visa Assessment Form </title>
+    <title>Australian Visa Assessment</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/include/bootstrap-3.0.2-dist/dist/css/bootstrap.min.css?v1" rel="stylesheet">
@@ -37,7 +37,7 @@
             <span class="icon-bar"></span>
           </button>
         -->
-          <a class="navbar-brand" href="#" data-toggle="collapse" data-target=".navbar-collapse">哥伦布签证评估表(Visa Assessment Form)</a>
+          <a class="navbar-brand" href="#" data-toggle="collapse" data-target=".navbar-collapse">"哥伦布"签证评估表(Australian Visa Assessment)</a>
         </div>
         <div class="navbar-collapse collapse">
         	{if $login_user != ''}

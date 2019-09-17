@@ -96,6 +96,7 @@ try {
 	$tpl->assign('pagetype', PAGE_TYPE);	
 	$tpl->assign('country', get_country());	
 	$tpl->assign('save', isset($T_STEPS[PAGE_TYPE]) ? $T_STEPS[PAGE_TYPE]['s'] : 0);	
+	$tpl->assign('steps', $T_STEPS);
     $tpl->display('wxp.tpl');
 }
 catch(Exception $e) {

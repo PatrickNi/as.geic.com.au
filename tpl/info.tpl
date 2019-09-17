@@ -1,7 +1,7 @@
 {include file="header.tpl"}
  
     <div class="container">
-        <div class="row">
+        <div class="row" style="padding-top:20px;">
         	<p></p>
         	<div class="col-lg-9">
                   <form class="form-horizontal" role="form" id="form_info" action="info.php">
@@ -50,13 +50,13 @@
                           <div class="form-group">
                             <label class="col-lg-4 control-label">姓<br/>(Last Name)</label>
                             <div class="col-lg-8">
-                				<input name="t_lname" type="text" class="form-control" value="{$user.lname}"//>
+                				      <input name="t_lname" type="text" class="form-control" value="{$user.lname}"//>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-lg-4 control-label">名<br/>(First Name)</label>
                             <div class="col-lg-8">
-                 				<input name="t_fname" type="text" class="form-control" value="{$user.fname}"//>       
+                 				       <input name="t_fname" type="text" class="form-control" value="{$user.fname}"//>       
                             </div>
                           </div>
                           <div class="form-group">
@@ -99,26 +99,15 @@
                  				<input name="t_mobile" type="text" class="form-control" value="{$user.mobile}"/>       
                             </div>
                           </div>  
-                          <div class="form-group">
-                            <label class="col-lg-4 control-label">现居住地址<br/>(Current residential address)</label>
-                            <div class="col-lg-8">
-                 				<input name="t_add" type="text" class="form-control" value="{$user.add}"/>       
-                            </div>
-                          </div>
                           	<div class="form-group">
                             <label class="col-lg-4 control-label">从何处知道我们<br/>(Where do u known us)</label>
                             <div class="col-lg-8">
-                                  <select name="t_about" class="form-control">
-                                    <option value="" selected>Others(其他)</option>              
-                        	    <option value="Wechat" {if $user.about == 'Wechat'} selected {/if}>“哥伦布咨询”公众微信</option>
-                                    <option value="QQ" {if $user.about == 'QQ'} selected {/if}>QQ(腾讯)</option>
-                                    <option value="Flyer" {if $user.about == 'Flyer'} selected {/if}>Flyer(传单发放)</option>
-                                    <option value="Friends" {if $user.about == 'Friends'} selected {/if}>Friends(朋友同学) </option>
-                                    <option value="Internet" {if $user.about == 'Internet'} selected {/if}>Internet(网上搜索)</option>
-                                    <option value="Passby" {if $user.about == 'Passby'} selected {/if}>Passby(路过)</option>
-                                    <option value="Seminar" {if $user.about == 'Seminar'} selected {/if}>Seminar(留学移民讲座)</option>
-                                    <option value="SubAgent" {if $user.about == 'SubAgent'} selected {/if}>SubAgent(海外留学中介)</option>          
-				  </select>
+                                  <select name="t_about" class="form-control input-sm">
+                                    <option value="" selected>Others please specify below(其他请在下框手动填写)</option> 
+                                    {foreach key=id item=v from=$aboutus}
+                                      <option value="{$id}" {if $user.about == '$id'} selected {/if}>{$v.en}({$v.zh})</option>
+                                    {/foreach}        
+				                          </select>
 	                              <input type="text" name="t_aboutTxt" value="{$user.about}" class="form-control" >      
                             </div>
                           </div>       
@@ -126,7 +115,9 @@
                   </div>  
                   
                      <div class="panel panel-success">
-                        <div class="panel-heading">联系人明细(Contact Person)</div>
+                        <div class="panel-heading">
+                          选填项：紧急联系人(Optional: Emergency Contact Person)
+                        </div>
                         <div class="panel-body">
                           <div class="form-group">
                             <label class="col-lg-4 control-label">联系人姓名<br/>(Contact person name)</label>
@@ -181,7 +172,7 @@
                             </div>
                           </div>                  
                           <div class="form-group">
-                            <label class="col-lg-4 control-label">对服务的详细要求<br />(Other things we can help you)</label>
+                            <label class="col-lg-4 control-label">对服务的其他详细要求，请在下框填写<br />(Others please specify below)</label>
                             <div class="col-lg-8">
  							 	<textarea class="form-control" name="t_note" rows="3">{$user.note}</textarea>       
                             </div>
@@ -191,7 +182,7 @@
                     <p class="pull-right">
 						<input type="hidden" name="t_agent" value="{$user.agent}">
 						{if $user.agent == 0 || $user.agent == ''}
-							<strong>邀请码(Code):</strong><input name="code" type="text" />&nbsp;&nbsp;&nbsp;
+							<strong>选填: 邀请码(Optional: code):</strong><input name="code" type="text" />&nbsp;&nbsp;&nbsp;
                     	{/if}
 						<button type="button" class="btn btn-success" id="save_info" >下一步(Next) &raquo;</button>&nbsp;
 					</p>                                                                 

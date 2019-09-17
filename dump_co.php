@@ -23,3 +23,18 @@ if (is_array($co) && count($co) > 0) {
 	rename($file_tmp, $file);
 }
 
+$ca = dump_visacate_v2();
+$file_tmp = FRONTEND_PATH."/visacate_v2.tmp";
+$file = FRONTEND_PATH."/visacate_v2.php";
+if (is_array($co) && count($co) > 0) {
+        file_put_contents($file_tmp, "<?php return ".var_export($ca,true).";\n");
+        rename($file_tmp, $file);
+}
+
+$ca = dump_aboutus();
+$file_tmp = FRONTEND_PATH."/aboutus.tmp";
+$file = FRONTEND_PATH."/aboutus.php";
+if (is_array($co) && count($co) > 0) {
+        file_put_contents($file_tmp, "<?php return ".var_export($ca,true).";\n");
+        rename($file_tmp, $file);
+}

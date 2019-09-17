@@ -7,7 +7,7 @@
         <p>{$v.t_com}<p/>
         <p>{$country}</p>
         <p>{$v.t_pos}</p>
-        <p>{if $v.t_fulltime == 1}Fulltime{else}Parttime{/if}</p>  
+        <p>{if $v.t_fulltime == 1}Full-time{else}Part-time{/if}</p>  
 		<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_wxp('{$id}')">Delete</button></p>                      
     </div>
 </div>

@@ -58,10 +58,14 @@ function api_call($url, $postdata=false) {
 		foreach ($rtn as $k => $v) {
 			if (is_array($v)) {
 				foreach ($v as $k1 => $v1) {
+					if (mb_detect_encoding($v1) == 'UTF-8')
+                        continue;
 					$rtn[$k][$k1] = mb_convert_encoding($v1, 'UTF-8', 'GB2312');
 				}	
 			}
 			else {
+				if (mb_detect_encoding($v) == 'UTF-8')
+                    continue;
 				$rtn[$k] = mb_convert_encoding($v, 'UTF-8', 'GB2312');
 			}
 		}	

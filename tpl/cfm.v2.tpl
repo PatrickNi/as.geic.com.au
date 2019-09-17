@@ -4,11 +4,20 @@
       .form-control {
         color:#0f0e0e;
       }
+      input:disabled{  
+        color: black;
+        opacity: 1;
+        -webkit-text-fill-color: black;
+      }
     </style>
 {/literal}
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="padding-top:20px;">
+          <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>请核实您填写的简历(Confirm your resume)!</strong>
+          </div>
           <form class="form-horizontal" role="form" id="form_info" action="info.php">
               <input type="hidden" name="p_type" value="{$pagetype}">
               <div class="panel panel-primary">
@@ -49,7 +58,7 @@
                     <div class="form-group">
                       <label class="col-lg-4 control-label">目前持有签证到期日<br/>(Current Visa Expiry Date)</label>
                       <div class="col-lg-4">
-                        <input name="t_epdate" type="text" class="form-control" value="{$user.epdate}" disabled/>
+                        <input name="t_epdate" type="text" class="form-control" value="{$user.epdate}" disabled />
                       </div>    
                     </div>
                     <div class="form-group">
@@ -78,7 +87,7 @@
                     <div class="form-group">
                       <label class="col-lg-4 control-label">生日<br/>(DoB)</label>
                       <div class="col-lg-8">
-                        <input name="t_dob" type="text" class="form-control" value="{$user.dob}" disabled/>        
+                        <input name="t_dob" type="text" class="form-control" value="{$user.dob}" disabled readonly="readonly"/>        
                       </div>
                     </div> 
                     <div class="form-group">
@@ -103,31 +112,22 @@
                       <div class="col-lg-8">
                         <input name="t_mobile" type="text" class="form-control" value="{$user.mobile}" disabled/>       
                       </div>
-                    </div>  
-                    <div class="form-group">
-                      <label class="col-lg-4 control-label">现居住地址<br/>(Current residential address)</label>
-                      <div class="col-lg-8">
-                        <input name="t_add" type="text" class="form-control" value="{$user.add}" disabled/>       
-                      </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-4 control-label">从何处知道我们<br/>(Where do u known us)</label>
                         <div class="col-lg-8">
-                              <select name="t_about" class="form-control" disabled>
-                                <option value="" selected>Others(其他)</option>              
-                                <option value="ChineseDaily" {if $user.about == 'ChineseDaily'} selected {/if}>ChieseDaily(澳洲新报)</option>
-                                <option value="Weibo" {if $user.about == 'Weibo'} selected {/if}>WeiBo(微博)</option>
-                                <option value="QQ" {if $user.about == 'QQ'} selected {/if}>QQ(腾询)</option>
-                                <option value="Tigtag" {if $user.about == 'Tigtag'} selected {/if}>TigTag(嘀嗒网)</option>
-                                <option value="Flyer" {if $user.about == 'Flyer'} selected {/if}>Flyer(传单发放)</option>
-                                <option value="Friends" {if $user.about == 'Friends'} selected {/if}>Friends(朋友同学) </option>
-                                <option value="Internet" {if $user.about == 'Internet'} selected {/if}>Internet(网上搜索)</option>
-                                <option value="CityWalker" {if $user.about == 'CityWalker'} selected {/if}>CityWalker(乐城杂志)</option>
-                                <option value="Passby" {if $user.about == 'Passby'} selected {/if}>Passby(路过)</option>
-                                <option value="Seminar" {if $user.about == 'Seminar'} selected {/if}>Seminar(留学移民讲座)</option>
-                                <option value="SubAgent" {if $user.about == 'SubAgent'} selected {/if}>SubAgent(海外留学中介)</option>
+                              <select name="t_about" class="form-control input-sm" disabled>
+                                    <option value="" selected>Others please specify below(其他请在下框手动填写)</option>              
+                                    <option value="Wechat" {if $user.about == 'Wechat'} selected {/if}>“哥伦布咨询”公众微信</option>
+                                    <option value="QQ" {if $user.about == 'QQ'} selected {/if}>QQ(腾讯)</option>
+                                    <option value="Flyer" {if $user.about == 'Flyer'} selected {/if}>Flyer(传单发放)</option>
+                                    <option value="Friends" {if $user.about == 'Friends'} selected {/if}>Friends(朋友同学) </option>
+                                    <option value="Internet" {if $user.about == 'Internet'} selected {/if}>Internet(网上搜索)</option>
+                                    <option value="Passby" {if $user.about == 'Passby'} selected {/if}>Passby(路过)</option>
+                                    <option value="Seminar" {if $user.about == 'Seminar'} selected {/if}>Seminar(留学移民讲座)</option>
+                                    <option value="SubAgent" {if $user.about == 'SubAgent'} selected {/if}>SubAgent(海外留学中介)</option>
                               </select>
-                            <input type="text" name="t_aboutTxt" value="{$user.about}" class="form-control" disabled>      
+                            <input type="text" name="t_aboutTxt" value="{$user.about}" class="form-control input-sm" disabled>      
                         </div>
                     </div>
                     <div class="form-group">
@@ -142,7 +142,9 @@
               </div>  
                   
               <div class="panel panel-success">
-                  <div class="panel-heading">联系人明细(Contact Person)</div>
+                  <div class="panel-heading">
+                          选填项：紧急联系人(Optional: Emergency Contact Person)
+                  </div>
                   <div class="panel-body">
                     <div class="form-group">
                       <label class="col-lg-4 control-label">联系人姓名<br/>(Contact person name)</label>
@@ -191,7 +193,7 @@
                             </div>                      
                     </div>                  
                     <div class="form-group">
-                      <label class="col-lg-4 control-label">对服务的详细要求<br />(Other things we can help you)</label>
+                      <label class="col-lg-4 control-label">对服务的其他详细要求，请在下框填写<br />(Others please specify below)</label>
                       <div class="col-lg-8">
                         <textarea class="form-control" name="t_note" rows="3" disabled>{$user.note}</textarea>       
                       </div>
@@ -263,13 +265,13 @@
                           </div>                    
                         </div>  
                       <div class="form-group">
-                          <label class="col-lg-4 control-label">全职/半职<br />(Fulltime/Partime)</label>
+                          <label class="col-lg-4 control-label">全职/兼职<br />(full-time/part-time)</label>
                           <div class="col-lg-6">
                               <label class="checkbox-inline">
-                                  <input name="t_fulltime" type="radio" value="1" {if $v.fulltime == 1}checked{/if} disabled> 全职(Fulltime)
+                                  <input name="t_fulltime" type="radio" value="1" {if $v.fulltime == 1}checked{/if} disabled> 全职(full-time)
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input name="t_fulltime" type="radio" value="0" {if $v.fulltime == 0}checked{/if} disabled> 半职(Partime)
+                                  <input name="t_fulltime" type="radio" value="0" {if $v.fulltime == 0}checked{/if} disabled> 兼职(part-time)
                                 </label>   
                           </div>                    
                         </div>                          
@@ -287,8 +289,8 @@
                       <div class="form-group">
                           <div class="col-lg-offset-4 col-lg-6">
                             <p class="pull-right">
-                              <button type="button" class="btn btn-danger" onclick="del_edu({$id})">删除(Delete)</button>&nbsp;&nbsp;
-                              <button type="button" class="btn btn-default" id="edit_edu_{$id}" >编辑(Edit) </button>&nbsp;
+                              <button type="button" class="btn btn-default" onclick="del_edu({$id})">删除(Delete)</button>&nbsp;&nbsp;
+                              <button type="button" class="btn btn-primary" id="edit_edu_{$id}" >编辑(Edit) </button>&nbsp;
                               <button type="button" class="btn btn-warning" id="save_edu_{$id}" disabled >保存(Save) </button>
                             </p>
                           </div>
@@ -345,21 +347,21 @@
                           </div>                    
                       </div>    
                       <div class="form-group">
-                          <label class="col-lg-4 control-label">全职/半职<br />(Fulltime/Partime)</label>
+                          <label class="col-lg-4 control-label">全职/兼职<br />(full-time/part-time)</label>
                           <div class="col-lg-6">
                               <label class="checkbox-inline">
-                                  <input name="t_fulltime" type="radio" value="1" {if $v.fulltime == 1} checked {/if}} disabled> 全职(Fulltime)
+                                  <input name="t_fulltime" type="radio" value="1" {if $v.fulltime == 1} checked {/if}} disabled> 全职(full-time)
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input name="t_fulltime" type="radio" value="0" {if $v.fulltime == 0} checked {/if}} disabled> 半职(Partime)
+                                  <input name="t_fulltime" type="radio" value="0" {if $v.fulltime == 0} checked {/if}} disabled> 兼职(part-time)
                                 </label>   
                           </div>                    
                       </div>                                  
                       <div class="form-group">
                           <div class="col-lg-offset-4 col-lg-6">
                             <p class="pull-right">
-                              <button type="button" class="btn btn-danger" onclick="del_wxp({$id})">删除(Delete)</button>&nbsp;&nbsp;
-                              <button type="button" class="btn btn-default" id="edit_wxp_{$id}" >编辑(Edit)</button>&nbsp;
+                              <button type="button" class="btn btn-default" onclick="del_wxp({$id})">删除(Delete)</button>&nbsp;&nbsp;
+                              <button type="button" class="btn btn-primary" id="edit_wxp_{$id}" >编辑(Edit)</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="save_wxp_{$id}" disabled>保存(Save)</button>&nbsp;
                             </p>
                           </div>                    

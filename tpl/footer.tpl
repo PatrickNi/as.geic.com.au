@@ -1,6 +1,13 @@
 		<hr>
     	<footer>
-        	<p>&copy; company 2000</p>
+            {if $cfm == 1}
+                <p>预约请扫“哥伦布澳洲咨询”到秘书服务</p>
+                <img width="180px" height="180px"  src="/images/wechat2.png">
+                <p class="text-muted">geic.com.au</p>
+            {/if}
+            <img src="/images/geic4.png">
+            <p style="padding-left: 55px;">哥伦布至尊服务您值得拥有，始自2000年！</p>
+            <p style="padding-left: 55px;">Global professional services since 2000.</p>
 	    </footer>
         <input type="hidden" id="errcode" value="{$error}" />
     </div> <!-- /container -->
@@ -31,7 +38,7 @@
     {elseif $pagetype == 'ielts'}
         <script src="/js/c_ielts.js?v03"></script>                        
     {elseif $pagetype == 'cfm'}
-        <script src="/js/c_cfm.js?v095"></script>                         
+        <script src="/js/c_cfm.js?v49"></script>                         
     {/if}
     
     {literal}

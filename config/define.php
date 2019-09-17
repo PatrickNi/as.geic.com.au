@@ -38,7 +38,7 @@ define('GOOGLE_RECAPTCHA_PRI', '6Ld9ce8SAAAAAPjfZpyK29FMrM1ZnZEPkoyZxnTz');
 
 
 //GLOBAL Var
-$URI_BACK = array(1=>'client/confirm.php', 2=>'index.php');
+$URI_BACK = array(1=>'client/confirm.php', 2=>'/');
 $client_type_arr = array('留学(Study)'=>'study','移民(Visa)'=>'immi');
 $client_type_arr['贷款(Home Loan)'] = 'homeloan';
 $client_type_arr['法律(Legal)'] = 'legal';

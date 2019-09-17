@@ -1,7 +1,7 @@
 {include file="header.tpl"}
  
 <div class="container">
-    <div class="row">
+    <div class="row" style="padding-top:20px;">
         <p></p>
         <div class="col-lg-9">
         	{foreach key=id item=v from=$edu}
@@ -60,6 +60,9 @@
                                   <option value="Middle School">初中(Junior High School)</option>
                                   <option value="High School">高中(Senior High School)</option>
                                   <option value="Vocational">职校(Vocational Collage)</option>
+                                  <option value="Cer III">澳洲三级证书(Cer III)</option>
+                                  <option value="Cer IV">澳洲四级证书(Cer IV)</option>
+                                  <option value="Foundation">大学预科(Foundation)</option>
                                   <option value="Diploma">二年大专(Diploma)</option>
                                   <option value="Advance Diploma">三年大专(Advanced Diploma)</option>
                                   <option value="Bachelor">大学本科(Bachelor)</option>
@@ -77,13 +80,13 @@
                 	        </div>                    
                         </div>  
                     	<div class="form-group">
-	                        <label class="col-lg-4 control-label">全职/半职<br />(Fulltime/Partime)</label>
+	                        <label class="col-lg-4 control-label">全职/兼职<br />(full-time/part-time)</label>
     	                    <div class="col-lg-6">
                              	<label class="checkbox-inline">
-                                  <input name="t_fulltime" type="radio" value="1" checked > 全职(Fulltime)
+                                  <input name="t_fulltime" type="radio" value="1" checked > 全职(full-time)
                                 </label>
                                 <label class="checkbox-inline">
-                                  <input name="t_fulltime" type="radio" value="0"> 半职(Partime)
+                                  <input name="t_fulltime" type="radio" value="0"> 兼职(part-time)
                                 </label>   
                 	        </div>                    
                         </div>                          

@@ -394,12 +394,34 @@ function dump_visacate() {
 	return api_call(AS_API.AS_ACTION_SETTING.'?act=vc');
 }
 
+function dump_visacate_v2() {
+	return api_call(AS_API.AS_ACTION_SETTING.'?act=vc2');
+}
+
+function dump_aboutus() {
+	return api_call(AS_API.AS_ACTION_SETTING.'?act=aboutus');
+}
+
+function get_aboutus() {
+	return include FRONTEND_PATH.'/aboutus.php';
+}
+
 function get_visacate() {
 	return include  FRONTEND_PATH.'/visacate.php';	
 }
 
 function dump_country() {
-	return api_call(AS_API.AS_ACTION_SETTING.'?act=co');
+	$tmp = api_call(AS_API.AS_ACTION_SETTING.'?act=co');
+	$format = array();
+	$format[1] = $tmp[1];//China
+	unset($tmp[1]);
+	$format[7] = $tmp[7];//Australian
+	unset($tmp[7]);
+	foreach ($tmp as $k => $v) {
+		$format[$k] = $v;
+	}
+	return $format;
+	//return api_call(AS_API.AS_ACTION_SETTING.'?act=co');
 }	
 
 function get_country() {

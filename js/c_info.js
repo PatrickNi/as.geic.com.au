@@ -21,12 +21,9 @@
 						case 't_email':
 						case 't_dob':
 						case 't_lname':
-						case 't_fname':
-							alert('提交失败，请检查红色框内不能为空！');						
+						case 't_fname':						
 							$(this).parent().parent().addClass('has-error');
-							$(this).focus();
 							pass = false;
-							return false;							
 							break;
 						default:
 							break;
@@ -35,17 +32,16 @@
 			});
 			
 			$("select[name='t_about']").each(function(){
-				if ($(this).val() == '' && $("input[name='t_aboutTxt']").val() == '') {
-							alert('提交失败，请检查红色框内不能为空！');						
+				if ($(this).val() == '' && $("input[name='t_aboutTxt']").val() == '') {				
 							$(this).parent().parent().addClass('has-error');
-							$(this).focus();
-							pass = false;
-							return false;										
+							pass = false;								
 				}
 			});
 			
-			if (!pass)
+			if (!pass) {
+				alert('提交失败，请检查红色框内不能为空！');
 				return false;
+			}
 			
 			loading('show');	
 			$.post($('#form_info').attr('action'), $('#form_info').serialize(), function(data){
