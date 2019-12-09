@@ -21,7 +21,8 @@
 						case 't_email':
 						case 't_dob':
 						case 't_lname':
-						case 't_fname':						
+						case 't_fname':
+						case 't_mobile':						
 							$(this).parent().parent().addClass('has-error');
 							pass = false;
 							break;
@@ -33,8 +34,8 @@
 			
 			$("select[name='t_about']").each(function(){
 				if ($(this).val() == '' && $("input[name='t_aboutTxt']").val() == '') {				
-							$(this).parent().parent().addClass('has-error');
-							pass = false;								
+					$(this).parent().parent().addClass('has-error');
+					pass = false;								
 				}
 			});
 			

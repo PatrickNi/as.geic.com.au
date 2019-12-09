@@ -33,8 +33,8 @@
                       <label class="col-lg-4 control-label">护照持有国<br/>(Country of passport)</label>
                       <div class="col-lg-8">
                         <select class="form-control" name="t_country" disabled>
-                            {foreach key=id item=name from=$country}
-                                <option value="{$id}" {if $id == $user.country} selected{/if}>{$name}</option>
+                            {foreach key=id item=v from=$country}
+                                <option value="{$id}" {if $id == $user.country} selected{/if}>{$v.en}({$v.zh})</option>
                               {/foreach}
                           </select>
                       </div>
@@ -43,8 +43,8 @@
                       <label class="col-lg-4 control-label">目前持有澳洲签证类别<br/>(Current Visa type)</label>
                       <div class="col-lg-8">
                         <select class="form-control" name="t_visa" disabled>
-                            {foreach key=id item=name from=$visacate}
-                                <option value="{$id}" {if $id == $user.visa} selected {/if}>{$name}</option>
+                            {foreach key=id item=v from=$visacate}
+                                <option value="{$id}" {if $id == $user.visa} selected {/if}>{$v.en}({$v.zh})</option>
                               {/foreach}
                           </select>        
                       </div>
@@ -241,11 +241,11 @@
                       <div class="form-group">
                           <label class="col-lg-4 control-label">学校所属国家(School Country)</label>
                           <div class="col-lg-6">
-                              <select class="form-control" name="t_country" disabled>
-                                  {foreach key=x item=name from=$country}
-                                      <option value="{$id}" {if $x == $v.country}selected{/if}>{$name}</option>
-                                  {/foreach}
-                              </select>
+                          <select class="form-control" name="t_country">
+                                  {foreach key=id item=co from=$country}
+                                      <option value="{$id}" {if $id == $v.country} selected{/if}>{$co.en}({$co.zh})</option>
+                                    {/foreach}
+                                </select>
                           </div>                    
                       </div>
                       <div class="form-group">
@@ -333,11 +333,11 @@
                       <div class="form-group">
                           <label class="col-lg-4 control-label">公司所属国家(Company Country)</label>
                           <div class="col-lg-6">
-                              <select class="form-control" name="t_country" disabled>
-                                  {foreach key=x item=name from=$country}
-                                      <option value="{$id}" {if $x == $c.country} selected{/if}>{$name}</option>
-                                  {/foreach}
-                              </select>
+                          <select class="form-control" name="t_country">
+                                  {foreach key=id item=co from=$country}
+                                      <option value="{$id}" {if $id == $c.country} selected{/if}>{$co.en}({$co.zh})</option>
+                                    {/foreach}
+                                </select>
                           </div>                    
                       </div>
                       <div class="form-group">

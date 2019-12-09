@@ -33,6 +33,7 @@
                     	<div class="form-group">
 	                        <label class="col-lg-4 control-label">结束时间(Complete Date)</label>
     	                    <div class="col-lg-6">
+                                 <small>若仍在职，请填写今天（If you are employed, please write the date as today’s date）</small>
         		                 <input type="text" class="form-control"name="t_tdate"/>
                 	        </div>
 
@@ -47,8 +48,8 @@
 	                        <label class="col-lg-4 control-label">公司所属国家(Company Country)</label>
     	                    <div class="col-lg-6">
                              	<select class="form-control" name="t_country">
-                               		{foreach key=id item=name from=$country}
-                                    	<option value="{$id}" {if $id == $user.country} selected{/if}>{$name}</option>
+                               		{foreach key=id item=v from=$country}
+                                    	<option value="{$id}" {if $id == $user.country} selected{/if}>{$v.en}({$v.zh})</option>
                                     {/foreach}
                                 </select>
                 	        </div>                    
@@ -79,8 +80,9 @@
                 </div>
             </div>
 			<p class="pull-right">
-				<a class="btn btn-default" href="edu.php" >&laquo; 上一步(Previous)</a>                                                                                    
-				<button type="button" class="btn btn-success" id="save_wxp" >下一步(Next) &raquo;</button>&nbsp;
+				<a class="btn btn-sm btn-default" href="edu.php" >&laquo; 上一步(Previous)</a>                                                                                    
+				<button type="button" class="btn btn-sm btn-success" id="save_wxp" >下一步(Next) &raquo;</button>&nbsp;
+                <a class="btn btn-sm btn-primary" href="/client/wxp.php?next=1" >跳过(Skip)</a>
 			</p>
         </div>
         {include file="sidebar.tpl"}                    

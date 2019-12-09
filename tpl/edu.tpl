@@ -45,9 +45,9 @@
                     	<div class="form-group">
 	                        <label class="col-lg-4 control-label">学校所属国家(School Country)</label>
     	                    <div class="col-lg-6">
-                             	<select class="form-control" name="t_country">
-                               		{foreach key=id item=name from=$country}
-                                    	<option value="{$id}" {if $id == $user.country} selected{/if}>{$name}</option>
+                            <select class="form-control" name="t_country">
+                                  {foreach key=id item=v from=$country}
+                                      <option value="{$id}" {if $id == $user.country} selected{/if}>{$v.en}({$v.zh})</option>
                                     {/foreach}
                                 </select>
                 	        </div>                    
@@ -113,8 +113,9 @@
             </div>
 			
 			<p class="pull-right">
-				<a class="btn btn-default" href="info.php" >&laquo; 上一步(Previous)</a>
-				<button type="button" class="btn btn-success" id="save_edu" >下一步(Next) &raquo;</button>&nbsp;
+				<a class="btn btn-sm btn-default" href="info.php" >&laquo; 上一步(Previous)</a>
+				<button type="button" class="btn btn-sm btn-success" id="save_edu" >下一步(Next) &raquo;</button>&nbsp;
+        <a class="btn btn-sm btn-primary" href="/client/edu.php?next=1" >跳过(Skip)</a>
 			</p>
         </div>
         {include file="sidebar.tpl"}                    

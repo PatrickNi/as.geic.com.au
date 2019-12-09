@@ -18,8 +18,8 @@
                             <label class="col-lg-4 control-label">护照持有国<br/>(Country of passport)</label>
                             <div class="col-lg-8">
                              	<select class="form-control" name="t_country">
-                               		{foreach key=id item=name from=$country}
-                                    	<option value="{$id}" {if $id == $user.country} selected{/if}>{$name}</option>
+                               		{foreach key=id item=v from=$country}
+                                    	<option value="{$id}" {if $id == $user.country} selected{/if}>{$v.en}({$v.zh})</option>
                                     {/foreach}
                                 </select>
                             </div>
@@ -28,8 +28,8 @@
                             <label class="col-lg-4 control-label">目前持有澳洲签证类别<br/>(Current Visa type)</label>
                             <div class="col-lg-8">
                              	<select class="form-control" name="t_visa">
-                               		{foreach key=id item=name from=$visacate}
-                                    	<option value="{$id}" {if $id == $user.visa} selected {/if}>{$name}</option>
+                               		{foreach key=id item=v from=$visacate}
+                                    	<option value="{$id}" {if $id == $user.visa} selected {/if}>{$v.en}({$v.zh})</option>
                                     {/foreach}
                                 </select>        
                             </div>
@@ -103,10 +103,10 @@
                             <label class="col-lg-4 control-label">从何处知道我们<br/>(Where do u known us)</label>
                             <div class="col-lg-8">
                                   <select name="t_about" class="form-control input-sm">
-                                    <option value="" selected>Others please specify below(其他请在下框手动填写)</option> 
                                     {foreach key=id item=v from=$aboutus}
                                       <option value="{$id}" {if $user.about == '$id'} selected {/if}>{$v.en}({$v.zh})</option>
-                                    {/foreach}        
+                                    {/foreach} 
+                                    <option value="">Others please specify below(其他请在下框手动填写)</option>       
 				                          </select>
 	                              <input type="text" name="t_aboutTxt" value="{$user.about}" class="form-control" >      
                             </div>
