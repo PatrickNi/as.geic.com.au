@@ -89,6 +89,7 @@
                                 <option value="married" {if $user.married == 'married'} selected {/if} >结婚(Married)</option>
                                 <option value="divorce" {if $user.married == 'divorce'} selected {/if}>离婚(Divorce)</option>
                                 <option value="never_married" {if $user.married == 'never_married'} selected {/if}>未婚(Never Married)</option>
+                                <option value="separated" {if $user.married == 'separated'} selected {/if}>分居(Separated)</option>
                                 <option value="defacto" {if $user.married == 'defacto'} selected {/if}>同居(Defacto Relationship)</option>
                               </select>       
                             </div>
