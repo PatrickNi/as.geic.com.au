@@ -40,10 +40,22 @@ try {
 
 	$tpl = new Template;
 	
-        if ($T_EMAIL == '') {
-		$tpl->display('login2.html');
+    if ($T_EMAIL == '') {
+		date_default_timezone_set('Australia/Sydney');
+		$week = date('w');
+		$hm   = date('H')*60+date('i');
+		if ($week >= 1 && $week <= 5 && $hm >= 540 && $hm <= 1050) {
+			header("Location: https://tawk.to/chat/5ef3c1124a7c6258179b47b4/default");
+		}
+		else {
+			header("Location: /welcome");
+		}
+
+		//$tpl->display('login2.html');
 		exit;
 	}
+
+
 	$tpl->assign('login_user', $T_EMAIL);
 	$tpl->assign('status', $T_STATUS);
 	$tpl->assign('info', isset($T_STEPS['info'])? $T_STEPS['info'] : '');

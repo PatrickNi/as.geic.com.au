@@ -13,17 +13,19 @@ try {
 	}
 	//submit
 	if(count($_POST) > 0) {
-		$_REQUEST['cid'] = $T_USER;
-		$_REQUEST['t_c'] = 1;
+		$_POST['cid'] = $T_USER;
+		$_POST['t_c'] = 1;
 		if (!($T_USER > 0)) {
-			$_REQUEST['status'] = 'pending';
-			$_REQUEST['t_sign'] = date('Y-m-d');
+			$_POST['status'] = 'pending';
+			$_POST['t_sign'] = date('Y-m-d');
 		}
-		$rtn = set_client();
+		$_POST['t_type'] = implode(',', $_POST['t_type']);
+		
+		$rtn = user_set_client();
 		if (stripos($rtn, 'error') !== false) {
 			throw new Exception ($rtn);
 		}
-		
+
 		//set_step($T_USER, PAGE_TYPE);
 		confirm_step($T_USER, PAGE_TYPE);
 					
@@ -49,8 +51,7 @@ try {
 
 	$data = array();
 	if ($T_USER > 0) {
-		$_POST['cid'] = $T_USER;
-		$data = get_client($T_USER);
+		$data = user_get_client($T_USER);
 	}
 	
 	$tpl = new Template;

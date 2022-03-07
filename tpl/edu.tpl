@@ -11,7 +11,7 @@
 	                 <button type="button" class="close" aria-hidden="true" onClick="del_edu('{$id}')">&times;</button>   
                  </div>
                 <div class="panel-body">      
-                	<p>{$v.school} @{$country[$v.country]}<p/>
+                	<p>{$v.school} @{$country[$v.country].en}<p/>
                     <p>{$v.qual}</p>
                     <p>{$v.major}</p>
                     <p>{if $v.fulltime == 1}Fulltime{else}Parttime{/if}</p>

@@ -41,9 +41,9 @@ try {
 
 
 	$tpl = new Template;
-	$tpl->assign('user', get_client($T_USER));
-	$tpl->assign('edu', get_edu($T_USER));
-	$tpl->assign('wxp', get_wxp($T_USER));
+	$tpl->assign('user', user_get_client($T_USER));
+	$tpl->assign('edu', user_get_edu($T_USER));
+	$tpl->assign('wxp', user_get_wxp($T_USER));
 	$tpl->assign('ielts', get_ielts($T_USER));
 	$tpl->assign('all_types', $client_type_arr);
 	$tpl->assign('login_user', $T_EMAIL);

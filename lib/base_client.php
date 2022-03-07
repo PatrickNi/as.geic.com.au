@@ -1,15 +1,51 @@
 <?php
 //user detail
+function user_login_sig($sig) {
+	return api_call(AS_API.AS_ACTION_REG.'?login=2&token=a74613df87c11d04519fb0ee4225c800', array('sig'=>$sig));
+}
+
+function user_get_client($cid) {
+	return api_call(AS_API.AS_ACTION_REG.'?get=1&token=a74613df87c11d04519fb0ee4225c800', array('cid'=>$cid));
+}
+
+function user_set_client() {
+	return api_call(AS_API.AS_ACTION_REG.'?token=a74613df87c11d04519fb0ee4225c800');
+}
+
 function user_login() {
-	return api_call(AS_API.AS_ACTION_REG.'?login=1');
+	return api_call(AS_API.AS_ACTION_REG.'?login=1&token=a74613df87c11d04519fb0ee4225c800');
 }
 
 function user_register($email='') {
-	return api_call(AS_API.AS_ACTION_REG.'?reg=1&email='.$email);
+	return api_call(AS_API.AS_ACTION_REG.'?reg=1&token=a74613df87c11d04519fb0ee4225c800&email='.$email);
 }
 
 function user_confirm() {
-	return api_call(AS_API.AS_ACTION_REG.'?cfm=1');
+	return api_call(AS_API.AS_ACTION_REG.'?cfm=1&token=a74613df87c11d04519fb0ee4225c800');
+}
+
+function user_set_edu() {
+	return api_call(AS_API.AS_ACTION_EDU.'?token=a74613df87c11d04519fb0ee4225c800');
+}
+
+function user_get_edu($cid) {
+	return api_call(AS_API.AS_ACTION_EDU.'?get=1&token=a74613df87c11d04519fb0ee4225c800', array('cid'=>$cid));
+}
+
+function user_del_edu($cid, $qid) {
+	return api_call(AS_API.AS_ACTION_EDU.'?del=1&token=a74613df87c11d04519fb0ee4225c800', array('cid'=>$cid, 'qid'=>$qid));
+}
+
+function user_set_wxp() {
+	return api_call(AS_API.AS_ACTION_WXP.'?token=a74613df87c11d04519fb0ee4225c800');
+}
+
+function user_get_wxp($cid) {
+	return api_call(AS_API.AS_ACTION_WXP.'?get=1&token=a74613df87c11d04519fb0ee4225c800', array('cid'=>$cid));
+}
+
+function user_del_wxp($cid, $wid) {
+	return api_call(AS_API.AS_ACTION_WXP.'?del=1&token=a74613df87c11d04519fb0ee4225c800', array('cid'=>$cid, 'wid'=>$wid));
 }
 
 function add_local_client($cid, $email) {
@@ -19,6 +55,19 @@ function add_local_client($cid, $email) {
 	}
 	return false;
 }
+
+function user_register_v2() {
+	return api_call(AS_API.AS_ACTION_REG.'?reg=2');
+}
+
+function add_local_client_v2($cid, $email, $lname,$fname,$phone,$wechatid,$ctype) {
+	if ($cid > 0 && $email !='') {
+		$sql = "insert ignore into client_info (CID, EMAIL, FK, RSYNC, LName, FName, Mobile, ClientType, Wechat_ID) values ({$cid}, '{$email}', '{$cid}', 1, '{$lname}', '{$fname}', '{$phone}', '{$ctype}', '{$wechatid}')";
+		return send_query($sql);	
+	}
+	return false;
+}
+
 
 function get_client($cid = 0) {
 		$_arr = array();
@@ -406,8 +455,9 @@ function get_aboutus() {
 	return include FRONTEND_PATH.'/aboutus.php';
 }
 
+
 function get_visacate() {
-	return include  FRONTEND_PATH.'/visacate.php';	
+	return include  FRONTEND_PATH.'/visacate_v2.php';	
 }
 
 function dump_country() {
@@ -427,4 +477,3 @@ function dump_country() {
 function get_country() {
 	return include FRONTEND_PATH.'/country.php';
 }
-

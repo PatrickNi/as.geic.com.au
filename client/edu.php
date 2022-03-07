@@ -16,14 +16,16 @@ try {
 		if ($T_USER == 0 || $T_USER == '') 
 			throw new Exception ("Please login first");
 		
-		
-		$rtn = set_edu();
+		$_POST['cid'] = $T_USER;
+		$_POST['isNew'] = 1;
+		$rtn = user_set_edu();
 		if (stripos($rtn, 'error') !== false) {
 			throw new Exception ($rtn);
 		}
 		set_step($T_USER, PAGE_TYPE);					
-		$arr['succ'] = 1;
-		if (strtolower($rtn) != 'success') {
+		
+		if (strtolower($rtn) > 0) {
+			$arr['succ'] = 1;
 			if (isset($_REQUEST['next']) && $_REQUEST['next'] == 1) {
 				confirm_step($T_USER, PAGE_TYPE);
 			}
@@ -32,10 +34,11 @@ try {
 			$tpl = new Template;
 			$tpl->assign('id', $rtn);
 			$tpl->assign('v', $_REQUEST);
-			$tpl->assign('country', $country[$_REQUEST['t_country']]);	
+			$tpl->assign('country', $country[$_REQUEST['t_country']]['en']);	
 			$arr['add'] = str_replace("\n", "",  $tpl->fetch('edu_add.tpl'));
 		}
 		else{
+			$arr['succ'] = 0;
 			$arr['add'] = '';
 			//confirm_step($T_USER, PAGE_TYPE);
 			//header("Location: /client/wxp.php");
@@ -70,12 +73,11 @@ try {
 	}
 
 
-	if(count($_GET) > 0 && $_GET['del'] == 1) {
-		if ($_GET['id'] == 0)
+	if(count($_REQUEST) > 0 && $_REQUEST['del'] == 1) {
+		if ($_REQUEST['id'] == 0)
 			throw new Exception ('No record delete');
 
-		$_REQUEST['qid'] = $_GET['id'];
-		$rtn = del_edu();
+		$rtn = user_del_edu($T_USER, $_REQUEST['id']);
 		if ($rtn)
 			$arr['succ'] = 1;
 		else
@@ -89,7 +91,7 @@ try {
 
 	$data = array();
 	if ($T_USER > 0) {
-		$data = get_edu($T_USER);
+		$data = user_get_edu($T_USER);
 	}
 	$tpl = new Template;
 	$tpl->assign('edu', $data);

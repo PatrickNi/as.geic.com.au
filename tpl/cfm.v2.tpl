@@ -134,8 +134,11 @@
                     <div class="form-group">
                       <div class="col-lg-offset-8 col-lg-4">
                         <p class="pull-right">
+                          <!--
                           <button type="button" class="btn btn-default" id="deep_edit_info_1" >编辑(Edit)</button>&nbsp;
                           <button type="button" class="btn btn-warning" id="deep_save_info_1" disabled>保存(Save)</button>&nbsp;
+                          -->
+                          <a href="/client/info.php">返回修改(Edit)</a>
                         </p>
                       </div>                    
                     </div>        
@@ -174,8 +177,11 @@
                     <div class="form-group">
                       <div class="col-lg-offset-8 col-lg-4">
                         <p class="pull-right">
+                          <!--
                           <button type="button" class="btn btn-default" id="deep_edit_info_2" >编辑(Edit)</button>&nbsp;
                           <button type="button" class="btn btn-warning" id="deep_save_info_2" disabled>保存(Save)</button>&nbsp;
+                          -->
+                          <a href="/client/info.php">返回修改(Edit)</a>
                         </p>
                       </div>                    
                     </div>                                                    
@@ -196,7 +202,7 @@
                     <div class="form-group">
                       <label class="col-lg-4 control-label">对服务的其他详细要求，请在下框填写<br />(Others please specify below)</label>
                       <div class="col-lg-8">
-                        <textarea class="form-control" name="t_note" rows="3" disabled>{$user.note}</textarea>       
+                        <textarea class="form-control" name="t_cus_note" rows="3" disabled>{$user.cus_note}</textarea>       
                       </div>
                     </div>
                   </div>                    
@@ -204,8 +210,11 @@
               <div class="form-group">
                   <div class="col-lg-offset-8 col-lg-4">
                     <p class="pull-right">
+                    <!--
                       <button type="button" class="btn btn-default" id="edit_info" >编辑(Edit)</button>&nbsp;
                       <button type="button" class="btn btn-warning" id="save_info" disabled>保存(Save)</button>&nbsp;
+                      -->
+                      <a href="/client/info.php">返回修改(Edit)</a>
                     </p>
                   </div>                    
               </div>                                                               
@@ -290,9 +299,12 @@
                       <div class="form-group">
                           <div class="col-lg-offset-4 col-lg-6">
                             <p class="pull-right">
+                              <!--
                               <button type="button" class="btn btn-default" onclick="del_edu({$id})">删除(Delete)</button>&nbsp;&nbsp;
                               <button type="button" class="btn btn-primary" id="edit_edu_{$id}" >编辑(Edit) </button>&nbsp;
                               <button type="button" class="btn btn-warning" id="save_edu_{$id}" disabled >保存(Save) </button>
+                              -->
+                              <a href="/client/edu.php">返回修改(Edit)</a>
                             </p>
                           </div>
                       </div>    
@@ -361,9 +373,12 @@
                       <div class="form-group">
                           <div class="col-lg-offset-4 col-lg-6">
                             <p class="pull-right">
+                            <!--
                               <button type="button" class="btn btn-default" onclick="del_wxp({$id})">删除(Delete)</button>&nbsp;&nbsp;
                               <button type="button" class="btn btn-primary" id="edit_wxp_{$id}" >编辑(Edit)</button>&nbsp;
                               <button type="button" class="btn btn-warning" id="save_wxp_{$id}" disabled>保存(Save)</button>&nbsp;
+                              -->
+                              <a href="/client/wxp.php">返回修改(Edit)</a>
                             </p>
                           </div>                    
                       </div>                                             

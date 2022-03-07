@@ -5,9 +5,12 @@
                 <img width="180px" height="180px"  src="/images/wechat2.png">
                 <p class="text-muted">geic.com.au</p>
             {/if}
+
+            <!--
             <img src="/images/geic4.png">
-            <p style="padding-left: 55px;">哥伦布至尊服务您值得拥有，始自2000年！</p>
-            <p style="padding-left: 55px;">Global professional services since 2000.</p>
+            -->
+            <p style="padding-left: 55px;">澳洲唯一全方位留学生和移民服务机构！</p>
+            <p style="padding-left: 55px;">哥伦布至尊服务始自2000年。</p>
 	    </footer>
         <input type="hidden" id="errcode" value="{$error}" />
     </div> <!-- /container -->
@@ -39,8 +42,22 @@
         <script src="/js/c_ielts.js?v03"></script>                        
     {elseif $pagetype == 'cfm'}
         <script src="/js/c_cfm.js?v49"></script>                         
+    {elseif $pagetype == 'welcome'}
+        <script src="/js/c_welcome.js?v1"></script> 
+    {elseif $pagetype == 'contactus'}
+        <script src="/js/clipboard.min.js"></script>
+            {literal}
+            <script>
+              $(document).ready(function(){
+                  var targetText=$("#code_txt").text();
+                  var clipboard = new Clipboard('#btn-cp');
+                  clipboard.on('success', function(e) {
+                              e.clearSelection();
+                  });
+              });
+            </script>
+            {/literal}                        
     {/if}
-    
     {literal}
     <script>
 		function loading(act) {

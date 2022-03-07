@@ -175,7 +175,7 @@
                           <div class="form-group">
                             <label class="col-lg-4 control-label">对服务的其他详细要求，请在下框填写<br />(Others please specify below)</label>
                             <div class="col-lg-8">
- 							 	<textarea class="form-control" name="t_note" rows="3">{$user.note}</textarea>       
+ 							 	<textarea class="form-control" name="t_cus_note" rows="3">{$user.cus_note}</textarea>       
                             </div>
                           </div>
                         </div>                    

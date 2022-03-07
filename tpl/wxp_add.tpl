@@ -8,6 +8,6 @@
         <p>{$country}</p>
         <p>{$v.t_pos}</p>
         <p>{if $v.t_fulltime == 1}Full-time{else}Part-time{/if}</p>  
-		<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_wxp('{$id}')">Delete</button></p>                      
+		<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_wxp('{$id}')">Delete(删除)</button></p>                      
     </div>
 </div>

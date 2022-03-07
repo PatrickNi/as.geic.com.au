@@ -9,6 +9,6 @@
         <p>{$v.t_major}</p>
         <p>{if $v.t_fulltime == 1}Full-time{else}Part-time{/if}</p>        
         <p>COMPLETED: {$v.t_status}</p>  
-		<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_edu('{$id}')">Delete</button></p>                          
+		<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_edu('{$id}')">Delete(删除)</button></p>                          
     </div>
 </div>

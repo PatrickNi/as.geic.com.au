@@ -12,7 +12,7 @@
                  </div>
                 <div class="panel-body">      
                 	<p>{$v.com}<p/>
-                    <p>{$country[$v.country]}</p>                    
+                    <p>{$country[$v.country].en}</p>                    
                     <p>{$v.pos}</p>   
 					<p>{if $v.fulltime == 1}Fulltime{else}Parttime{/if}</p>   
 					<p class="pull-right"><button type="button" class="btn btn-danger btn-xs" onClick="del_wxp('{$id}')">Delete(删除)</button></p>                                      

@@ -109,3 +109,37 @@ function get_steps($cid=0) {
 	}
 	return $arr;
 }
+
+
+function do_request($url,$http_method="get",$params=array(),$headers=array()) {
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_NOBODY, false);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 3600);
+    curl_setopt($ch, CURLOPT_USERAGENT, "GEIC API Client 1.0");
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+
+    //only for BETA
+    //curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC ) ;
+    //curl_setopt($ch, CURLOPT_USERPWD, NGINX_CURLOPT_USERPWD);
+
+    //curl_setopt($ch, CURLOPT_ENCODING, "gzip, deflate");
+    if($http_method == "post" && count($params) > 0) {
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+    }
+
+    if (count($headers) > 0) {
+        curl_setopt ($ch, CURLOPT_HTTPHEADER, $headers);
+    }
+
+    $r = curl_exec($ch);
+    //echo "{$r}\n";
+    return $r;
+}
